@@ -121,5 +121,3 @@ function vig(mot, clef) {
   }
   return motCrypte;
 }
-
-console.log(vig("WIKIPEDIA", "CRYPTO"))
