@@ -113,7 +113,7 @@ function vig(mot, clef) {
     return "";
   }
   motCrypte = "";
-  for(var i = 1;i < clef.length; i++) {
+  for(var i = 1;i < mot.length; i++) {
     codeLettre = mot.charCodeAt(i-1)-65;
     decalage = clef.charCodeAt((i-1)%clef.length)-65;
     lettre = String.fromCharCode(65+(codeLettre+decalage)%26);
@@ -121,3 +121,5 @@ function vig(mot, clef) {
   }
   return motCrypte;
 }
+
+console.log(vig("WIKIPEDIA", "CRYPTO"))
