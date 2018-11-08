@@ -40,30 +40,23 @@ function leet(string) {
         case 'A':
         case 'a':
           return 4;
-          break;
         case 'E':
         case 'e':
           return 3;
-          break;
         case 'I':
         case 'i':
           return 1;
-          break;
         case 'O':
         case 'o':
           return 0;
-          break;
         case 'U':
         case 'u':
           return "(_)"
-          break;
         case 'Y':
         case 'y':
           return 7;
-          break;
         default:
           return l;
-          break;
       }
     }
   ).join('')
@@ -113,11 +106,13 @@ function vig(mot, clef) {
     return "";
   }
   motCrypte = "";
-  for(var i = 1;i < mot.length; i++) {
-    codeLettre = mot.charCodeAt(i-1)-65;
-    decalage = clef.charCodeAt((i-1)%clef.length)-65;
+  for(var i = 0;i < mot.length; i++) {
+    codeLettre = mot.toUpperCase().charCodeAt(i-1)-65;
+    decalage = clef.toUpperCase().charCodeAt((i-1)%clef.length)-65;
     lettre = String.fromCharCode(65+(codeLettre+decalage)%26);
     motCrypte = motCrypte.concat('', lettre);
   }
   return motCrypte;
 }
+
+console.log(vig("WIKIPEDIA", "CRYPTO"));
