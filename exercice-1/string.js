@@ -106,7 +106,7 @@ function vig(mot, clef) {
     return "";
   }
   motCrypte = "";
-  for(var i = 0;i < mot.length; i++) {
+  for(var i = 0;i <= mot.length; i++) {
     codeLettre = mot.toUpperCase().charCodeAt(i-1)-65;
     decalage = clef.toUpperCase().charCodeAt((i-1)%clef.length)-65;
     lettre = String.fromCharCode(65+(codeLettre+decalage)%26);
