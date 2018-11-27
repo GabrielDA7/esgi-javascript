@@ -113,7 +113,7 @@ function vig(mot, clef) {
   }
   motCrypte = "";
   cptSpace = 0;
-  for(var i = 0;i <= mot.length; i++) {
+  for(var i = 1;i <= mot.length; i++) {
     if(mot.charAt(i-1) != " ") {
       codeLettre = mot.toUpperCase().charCodeAt(i-1)-65;
       decalage = clef.toUpperCase().charCodeAt((i-1-cptSpace)%clef.length)-65;
@@ -127,6 +127,4 @@ function vig(mot, clef) {
   return motCrypte.toLowerCase();
 }
 
-
 console.log(vig("une phrase tres tres longue mais qui ne veut absolument rien dire car c est juste un test", "nawakdecheznawak"))
-                // "naw akdech ezna wakn awakde chez naw ak nawa kdecheznaw akna wakd ech e zna wakna wa kdec""
