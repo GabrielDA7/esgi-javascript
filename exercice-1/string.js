@@ -22,7 +22,7 @@ function camelCase(string) {
   if (typeof string != "string"){
     return "";
   }
-  string = string.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
+  string = string.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, ' ');
   return capitalize(string).split(' ').join('');
 }
 
@@ -112,14 +112,21 @@ function vig(mot, clef) {
     return "";
   }
   motCrypte = "";
+  cptSpace = 0;
   for(var i = 0;i <= mot.length; i++) {
-    codeLettre = mot.toUpperCase().charCodeAt(i-1)-65;
-    decalage = clef.toUpperCase().charCodeAt((i-1)%clef.length)-65;
-    lettre = String.fromCharCode(65+(codeLettre+decalage)%26);
-    motCrypte = motCrypte.concat('', lettre);
+    if(mot.charAt(i-1) != " ") {
+      codeLettre = mot.toUpperCase().charCodeAt(i-1)-65;
+      decalage = clef.toUpperCase().charCodeAt((i-1-cptSpace)%clef.length)-65;
+      lettre = String.fromCharCode(65+(codeLettre+decalage)%26);
+      motCrypte = motCrypte.concat('', lettre);
+    } else {
+      cptSpace++
+      motCrypte = motCrypte.concat('', ' ');
+    }
   }
-  return motCrypte;
+  return motCrypte.toLowerCase();
 }
 
 
-console.log(camelCase("ToggleCase is_the coolest"))
+console.log(vig("une phrase tres tres longue mais qui ne veut absolument rien dire car c est juste un test", "nawakdecheznawak"))
+                // "naw akdech ezna wakn awakde chez naw ak nawa kdecheznaw akna wakd ech e zna wakna wa kdec""
