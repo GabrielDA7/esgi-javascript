@@ -1,11 +1,15 @@
 function ucfirst(string) {
-  isNotString(string);
+  if (typeof string != "string"){
+    return "";
+  }
 
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 function capitalize(string) {
-  isNotString(string);
+  if (typeof string != "string"){
+    return "";
+  }
 
   return string
   .toLowerCase()
@@ -15,19 +19,25 @@ function capitalize(string) {
 }
 
 function camelCase(string) {
-  isNotString(string);
+  if (typeof string != "string"){
+    return "";
+  }
   string = string.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
   return capitalize(string).split(' ').join('');
 }
 
 function snake_case(string) {
-  isNotString(string);
+  if (typeof string != "string"){
+    return "";
+  }
 
   return string.toLowerCase().split(' ').join('_');
 }
 
 function leet(string) {
-  isNotString(string);
+  if (typeof string != "string"){
+    return "";
+  }
 
   return string.split('').map(l =>
     {
@@ -58,7 +68,9 @@ function leet(string) {
 }
 
 function prop_access(object, path) {
-  isNotString(string);
+  if (typeof path != "string"){
+    return "";
+  }
 
   if(typeof object != 'object') {
     console.log('Need Object at first parameter');
@@ -80,14 +92,18 @@ function prop_access(object, path) {
 }
 
 function verlan(string) {
-  isNotString(string);
+  if (typeof string != "string"){
+    return "";
+  }
   return string.split(' ').map(word =>
     word.split('').reverse().join('')
   ).join(' ');
 }
 
 function yoda(string) {
-  isNotString(string);
+  if (typeof string != "string"){
+    return "";
+  }
   return string.split(' ').reverse().join(' ');
 }
 
@@ -105,10 +121,5 @@ function vig(mot, clef) {
   return motCrypte;
 }
 
-function isNotString(input) {
-  if (typeof input != "string"){
-    return "";
-  }
-}
 
-console.log(vig("un mot"))
+console.log(camelCase("ToggleCase is_the coolest"))
