@@ -69,7 +69,7 @@ function leet(string) {
 
 function prop_access(object, path) {
   if (typeof path != "string"){
-    return "";
+    return object;
   }
 
   if(typeof object != 'object' || object == null) {
