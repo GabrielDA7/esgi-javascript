@@ -72,8 +72,9 @@ function prop_access(object, path) {
     return "";
   }
 
-  if(typeof object != 'object') {
-    console.log('Need Object at first parameter');
+  if(typeof object != 'object' || object == null) {
+    console.log(path + ' not exist');
+    return;
   }
   if (path === null || path === '') {
     return object;
@@ -126,5 +127,3 @@ function vig(mot, clef) {
   }
   return motCrypte.toLowerCase();
 }
-
-console.log(vig("une phrase tres tres longue mais qui ne veut absolument rien dire car c est juste un test", "nawakdecheznawak"))
