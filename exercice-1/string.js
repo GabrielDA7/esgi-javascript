@@ -1,14 +1,12 @@
 function ucfirst(string) {
-  if (typeof string != "string"){
-    return "";
-  }
+  isNotString(string);
+
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 function capitalize(string) {
-  if (typeof string != "string"){
-    return "";
-  }
+  isNotString(string);
+
   return string
   .toLowerCase()
   .split(' ')
@@ -17,23 +15,20 @@ function capitalize(string) {
 }
 
 function camelCase(string) {
-  if (typeof string != "string"){
-    return "";
-  }
+  isNotString(string);
+  string = string.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
   return capitalize(string).split(' ').join('');
 }
 
 function snake_case(string) {
-  if (typeof string != "string"){
-    return "";
-  }
+  isNotString(string);
+
   return string.toLowerCase().split(' ').join('_');
 }
 
 function leet(string) {
-  if (typeof string != "string"){
-    return "";
-  }
+  isNotString(string);
+
   return string.split('').map(l =>
     {
       switch (l) {
@@ -63,9 +58,8 @@ function leet(string) {
 }
 
 function prop_access(object, path) {
-  if (typeof path != "string"){
-    return "";
-  }
+  isNotString(string);
+
   if(typeof object != 'object') {
     console.log('Need Object at first parameter');
   }
@@ -86,18 +80,14 @@ function prop_access(object, path) {
 }
 
 function verlan(string) {
-  if (typeof string != "string"){
-    return "";
-  }
+  isNotString(string);
   return string.split(' ').map(word =>
     word.split('').reverse().join('')
   ).join(' ');
 }
 
 function yoda(string) {
-  if (typeof string != "string"){
-    return "";
-  }
+  isNotString(string);
   return string.split(' ').reverse().join(' ');
 }
 
@@ -115,4 +105,10 @@ function vig(mot, clef) {
   return motCrypte;
 }
 
-console.log(vig("WIKIPEDIA", "CRYPTO"));
+function isNotString(input) {
+  if (typeof input != "string"){
+    return "";
+  }
+}
+
+console.log(vig("un mot"))
