@@ -1,9 +1,9 @@
 String.prototype.ucfirst = function () {
-  return this.charAt(0).toUpperCase() + this.slice(1);
+  return this.valueOf().charAt(0).toUpperCase() + this.valueOf().slice(1);
 }
 
 String.prototype.capitalize = function () {
-  return this
+  return this.valueOf()
   .toLowerCase()
   .split(' ')
   .map(string => ucfirst(string))
@@ -11,16 +11,16 @@ String.prototype.capitalize = function () {
 }
 
 String.prototype.camelCase = function() {
-  string = this.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, ' ');
+  string = this.valueOf().replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, ' ');
   return capitalize(string).split(' ').join('');
 }
 
 String.prototype.snake_case = function() {
-  return this.toLowerCase().split(' ').join('_');
+  return this.valueOf().toLowerCase().split(' ').join('_');
 }
 
 String.prototype.leet = function() {
-  return this.split('').map(l =>
+  return this.valueOf().split('').map(l =>
     {
       switch (l) {
         case 'A':
@@ -49,13 +49,13 @@ String.prototype.leet = function() {
 }
 
 String.prototype.verlan = function() {
-  return this.split(' ').map(word =>
+  return this.valueOf().split(' ').map(word =>
     word.split('').reverse().join('')
   ).join(' ');
 }
 
 String.prototype.yoda = function() {
-  return this.split(' ').reverse().join(' ');
+  return this.valueOf().split(' ').reverse().join(' ');
 }
 
 String.prototype.vig = function(clef) {
@@ -64,9 +64,9 @@ String.prototype.vig = function(clef) {
   }
   motCrypte = "";
   cptSpace = 0;
-  for(var i = 1;i <= this.length; i++) {
-    if(this.charAt(i-1) != " ") {
-      codeLettre = this.toUpperCase().charCodeAt(i-1)-65;
+  for(var i = 1;i <= this.valueOf().length; i++) {
+    if(this.valueOf().charAt(i-1) != " ") {
+      codeLettre = this.valueOf().toUpperCase().charCodeAt(i-1)-65;
       decalage = clef.toUpperCase().charCodeAt((i-1-cptSpace)%clef.length)-65;
       lettre = String.fromCharCode(65+(codeLettre+decalage)%26);
       motCrypte = motCrypte.concat('', lettre);
@@ -87,13 +87,13 @@ Object.prototype.prop_access = function(path) {
     return object;
   }
 
-  if(this == null) {
+  if(this.valueOf() == null) {
     console.log(path + ' not exist');
     return;
   }
 
   const props = path.split('.');
-  let property = this;
+  let property = this.valueOf();
   props.forEach(function (prop) {
     if(!property.hasOwnProperty(prop)) {
       console.log(path + ' not exist');
@@ -103,3 +103,5 @@ Object.prototype.prop_access = function(path) {
   });
   return property;
 }
+
+console.log("ma chaine".ucfirst())
